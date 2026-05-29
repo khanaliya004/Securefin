@@ -1,0 +1,274 @@
+/* style.css */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f5ead7;
+  color:#690000;
+}
+
+/* NAVBAR */
+
+.custom-navbar{
+  background:#7a0000;
+  padding:18px 0;
+}
+
+.nav-link{
+  color:#f5ead7 !important;
+  font-weight:500;
+}
+
+.nav-link:hover{
+  opacity:0.7;
+}
+
+.hire-btn{
+  background:#f5ead7;
+  color:#7a0000;
+  border-radius:30px;
+  padding:10px 24px;
+  font-weight:600;
+}
+
+.hire-btn:hover{
+  background:#fff;
+  color:#7a0000;
+}
+
+/* HERO */
+
+.hero-section{
+  min-height:100vh;
+  padding:80px 0;
+}
+
+.hero-tag{
+  letter-spacing:3px;
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+.hero-title{
+  font-size:90px;
+  font-weight:700;
+  line-height:95px;
+}
+
+.hero-description{
+  margin:30px 0;
+  line-height:32px;
+  font-size:17px;
+  max-width:600px;
+}
+
+.main-btn{
+  background:#7a0000;
+  color:#f5ead7;
+  padding:14px 30px;
+  border-radius:35px;
+  font-weight:600;
+}
+
+.main-btn:hover{
+  background:#5a0000;
+  color:#fff;
+}
+
+.outline-btn{
+  border:2px solid #7a0000;
+  color:#7a0000;
+  padding:14px 30px;
+  border-radius:35px;
+  font-weight:600;
+}
+
+.outline-btn:hover{
+  background:#7a0000;
+  color:#fff;
+}
+
+/* PROFILE */
+
+.profile-card{
+  width:400px;
+  height:520px;
+  background:#7a0000;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,0.2);
+}
+
+.profile-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* COMMON */
+
+.section-padding{
+  padding:100px 0;
+}
+
+.section-title{
+  font-size:45px;
+  font-weight:700;
+  margin-bottom:60px;
+}
+
+/* ABOUT */
+
+.about-box{
+  background:#fff7ed;
+  border:2px solid #7a0000;
+  border-radius:25px;
+  padding:45px;
+}
+
+.about-box p{
+  line-height:34px;
+  font-size:17px;
+}
+
+/* SKILLS */
+
+.skill-card{
+  background:#7a0000;
+  color:#f5ead7;
+  padding:35px;
+  border-radius:25px;
+  transition:0.3s;
+}
+
+.skill-card:hover{
+  transform:translateY(-8px);
+}
+
+.skill-card h4{
+  margin-bottom:15px;
+}
+
+.skill-card p{
+  line-height:28px;
+}
+
+/* PROJECTS */
+
+.project-card{
+  background:#fff7ed;
+  border:2px solid #7a0000;
+  padding:35px;
+  border-radius:25px;
+  transition:0.3s;
+}
+
+.project-card:hover{
+  background:#7a0000;
+  color:#f5ead7;
+}
+
+.project-card h4{
+  margin-bottom:15px;
+}
+
+.project-card p{
+  line-height:30px;
+  margin-bottom:20px;
+}
+
+.project-card a{
+  text-decoration:none;
+  color:#7a0000;
+  font-weight:600;
+}
+
+.project-card:hover a{
+  color:#fff;
+}
+
+/* CONTACT */
+
+.contact-box{
+  background:#7a0000;
+  color:#f5ead7;
+  padding:50px;
+  border-radius:25px;
+}
+
+.contact-box p{
+  line-height:40px;
+  font-size:17px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#7a0000;
+  color:#f5ead7;
+  padding:25px;
+  margin-top:50px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+  .hero-section{
+    text-align:center;
+  }
+
+  .hero-description{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-title{
+    font-size:60px;
+    line-height:70px;
+  }
+
+  .profile-card{
+    width:320px;
+    height:420px;
+  }
+
+}
+/* EXPERIENCE */
+
+.experience-card{
+  background:#fff7ed;
+  border:2px solid #7a0000;
+  border-radius:25px;
+  padding:40px;
+  transition:0.3s;
+}
+
+.experience-card:hover{
+  transform:translateY(-5px);
+}
+
+.company-name{
+  color:#7a0000;
+  font-weight:600;
+}
+
+.experience-date{
+  background:#7a0000;
+  color:#f5ead7;
+  padding:10px 20px;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:500;
+}
+
+.experience-description{
+  line-height:32px;
+  font-size:16px;
+  color:#4d0000;
+}
