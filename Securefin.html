@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Finance Studio</title>
+    <link rel="stylesheet" href="Securefin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="auth-container" class="auth-screen">
+        <div class="auth-card">
+            <h2>Secure Finance Portal</h2>
+            <p>Enter any credentials to login or create a simulation account.</p>
+            <form id="auth-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" required placeholder="e.g., admin">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <div class="auth-buttons">
+                    <button type="submit" id="btn-login" class="btn btn-primary">Login</button>
+                    <button type="button" id="btn-signup" class="btn btn-secondary">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="dashboard-container" class="dashboard-layout hidden">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h3>FinanceStudio</h3>
+            </div>
+            <div class="user-profile">
+                <div class="avatar">U</div>
+                <span id="display-username">User</span>
+            </div>
+            <div class="budget-settings-box">
+                <h4>Set Monthly Budget</h4>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="budget-category">
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Education">Education</option>
+                        <option value="Health">Health</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Limit (₹)</label>
+                    <input type="number" id="budget-limit" placeholder="e.g., 5000">
+                </div>
+                <button id="btn-set-budget" class="btn btn-secondary btn-block">Apply Constraint</button>
+            </div>
+            <button id="btn-logout" class="btn btn-danger btn-block">Secure Logout</button>
+        </aside>
+
+        <main class="main-content">
+            <header class="metrics-grid">
+                <div class="card metric-card balance-card">
+                    <h4>Total Balance</h4>
+                    <h2 id="metric-balance">₹0.00</h2>
+                </div>
+                <div class="card metric-card savings-card">
+                    <h4>Net Savings</h4>
+                    <h2 id="metric-savings">₹0.00</h2>
+                </div>
+            </header>
+
+            <div class="content-grid">
+                <section class="card form-section">
+                    <h3>Add Income / Expense</h3>
+                    <form id="tx-form">
+                        <div class="form-group">
+                            <label>Transaction Type</label>
+                            <select id="tx-type">
+                                <option value="Income">Income</option>
+                                <option value="Expense">Expense</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="tx-category">
+                                <option value="Food">Food</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Bills">Bills</option>
+                                <option value="Education">Education</option>
+                                <option value="Health">Health</option>
+                                <option value="Salary">Salary</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Amount (₹)</label>
+                            <input type="number" id="tx-amount" required placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" id="tx-desc" placeholder="e.g., Grocery store">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Save Record</button>
+                    </form>
+                </section>
+
+                <section class="card history-section">
+                    <div class="history-header">
+                        <h3>Transaction Ledger</h3>
+                        <input type="text" id="tx-search" placeholder="Search records...">
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="ledger-table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ledger-body">
+                                </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="Securefin.js"></script>
+</body>
+</html>
