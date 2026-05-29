@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNook Studio — Cozy Reading Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/dist/embed.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pastel-bg: #Fbf6f0;       /* Soft Cream */
+            --pastel-card: #ffffff;     /* Crisp White */
+            --pastel-pink: #Fbcbc9;     /* Cozy Rose Pink */
+            --pastel-sage: #CCE2CB;     /* Mint Sage Green */
+            --pastel-lavender: #D6C7E8; /* Soft Purple */
+            --pastel-yellow: #FFF1C5;   /* Warm Honey Yellow */
+            --text-cozy: #5D5451;       /* Deep Cocoa Brown */
+            --radius-cute: 20px;
+        }
+
+        body {
+            background-color: var(--pastel-bg);
+            color: var(--text-cozy);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--text-cozy);
+        }
+
+        /* Custom Cute Components */
+        .cozy-card {
+            background: var(--pastel-card);
+            border: 3px solid #FFF;
+            border-radius: var(--radius-cute);
+            box-shadow: 0 8px 20px rgba(93, 84, 81, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 24px;
+        }
+        .cozy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(93, 84, 81, 0.08);
+        }
+
+        .btn-cute {
+            border-radius: 15px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 500;
+            padding: 10px 20px;
+            transition: all 0.2s ease;
+            border: none;
+        }
+        .btn-cute-pink { background-color: var(--pastel-pink); color: #fff; }
+        .btn-cute-sage { background-color: var(--pastel-sage); color: #4A5D4E; }
+        .btn-cute-lavender { background-color: var(--pastel-lavender); color: #524463; }
+        
+        .btn-cute:hover {
+            filter: brightness(0.95);
+            transform: scale(1.03);
+        }
+
+        /* Progress Bar override */
+        .progress {
+            height: 22px;
+            border-radius: 11px;
+            background-color: #EFEBE4;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background-color: var(--pastel-sage) !important;
+            color: #4A5D4E !important;
+            font-weight: 700;
+        }
+
+        .badge-status {
+            border-radius: 10px;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        input, select {
+            border: 2px solid #EFEBE4 !important;
+            border-radius: 12px !important;
+            padding: 10px !important;
+            color: var(--text-cozy) !important;
+        }
+        input:focus, select:focus {
+            border-color: var(--pastel-pink) !important;
+            box-shadow: none !important;
+        }
+
+        /* Timer Aesthetic pulses */
+        #timer-display {
+            font-size: 42px;
+            font-family: 'Fredoka', sans-serif;
+            color: var(--text-cozy);
+            letter-spacing: 2px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container my-5 text-center">
+        <h1 class="display-4 mb-2">🐾 BookNook Studio</h1>
+        <p class="text-muted">Your cozy space to track aesthetic reading vibes & analytics</p>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row g-4">
+            
+            <div class="col-lg-4 col-md-5">
+                <div class="row g-4">
+                    
+                    <div class="col-12">
+                        <div class="cozy-card text-center" style="background-color: var(--pastel-yellow);">
+                            <h3>☕ Reading Session</h3>
+                            <div id="timer-display">00:00</div>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button id="btn-timer-toggle" class="btn btn-cute btn-cute-sage">Start Session</button>
+                                <button id="btn-timer-reset" class="btn btn-cute btn-cute-pink">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="cozy-card">
+                            <h4 class="mb-3">✨ Add New Book</h4>
+                            <form id="book-form">
+                                <div class="mb-3">
+                                    <label class="form-label">Book Title</label>
+                                    <input type="text" id="book-title" class="form-control" placeholder="e.g., The Secret Garden" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Total Pages</label>
+                                    <input type="number" id="book-pages" class="form-control" placeholder="320" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Reading Status</label>
+                                    <select id="book-status" class="form-select">
+                                        <option value="Reading">📖 Reading</option>
+                                        <option value="Completed">🌸 Completed</option>
+                                        <option value="Plan to Read">🍂 Plan to Read</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-cute btn-cute-pink w-100">Add to Shelf</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-7">
+                <div class="row g-4">
+                    
+                    <div class="col-12">
+                        <div class="cozy-card">
+                            <h4 class="mb-3">📊 Reading Analytics Goal</h4>
+                            <p class="mb-2 text-muted">Your target: Complete 5 books! Keep going cozy reader ✨</p>
+                            <div class="progress mb-3">
+                                <div id="goal-progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%">0%</div>
+                            </div>
+                            <div class="d-flex justify-content-between text-center mt-2">
+                                <div>
+                                    <span class="text-muted small">Total Books</span>
+                                    <h5 id="stat-total-books">0</h5>
+                                </div>
+                                <div>
+                                    <span class="text-muted small">Completed</span>
+                                    <h5 id="stat-completed-books" style="color: #4A5D4E;">0</h5>
+                                </div>
+                                <div>
+                                    <span class="text-muted small">Total Pages Tracked</span>
+                                    <h5 id="stat-total-pages">0</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                            <h3>📚 Your Cozy Bookshelf</h3>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-cute btn-cute-lavender active" onclick="filterBooks('All')">All</button>
+                                <button type="button" class="btn btn-cute btn-cute-lavender ms-1" onclick="filterBooks('Reading')">Reading</button>
+                                <button type="button" class="btn btn-cute btn-cute-lavender ms-1" onclick="filterBooks('Completed')">Completed</button>
+                            </div>
+                        </div>
+
+                        <div id="bookshelf-grid" class="row g-3">
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Data Store Collections State Management System (Using LocalStorage integration)
+        let books = JSON.parse(localStorage.getItem('booknook_books')) || [
+            { id: 1, title: "The Cozy Autumn Tales", pages: 240, status: "Completed" },
+            { id: 2, title: "Midnight Tea Library", pages: 310, status: "Reading" }
+        ];
+
+        // Session Timer State Controls Variable Flags
+        let timerInterval = null;
+        let totalSeconds = 0;
+        let isTimerRunning = false;
+
+        // DOM Targets Hooks Cache Configuration 
+        const bookForm = document.getElementById('book-form');
+        const bookshelfGrid = document.getElementById('bookshelf-grid');
+        const timerDisplay = document.getElementById('timer-display');
+        const btnTimerToggle = document.getElementById('btn-timer-toggle');
+        const btnTimerReset = document.getElementById('btn-timer-reset');
+
+        // --- SESSION TIMER CONTROLS INTEGRATION FUNCTION LOGIC ---
+        btnTimerToggle.addEventListener('click', () => {
+            if(!isTimerRunning) {
+                isTimerRunning = true;
+                btnTimerToggle.innerText = "Pause Study";
+                btnTimerToggle.classList.replace('btn-cute-sage', 'btn-cute-pink');
+                
+                timerInterval = setInterval(() => {
+                    totalSeconds++;
+                    let mins = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+                    let secs = String(totalSeconds % 60).padStart(2, '0');
+                    timerDisplay.innerText = `${mins}:${secs}`;
+                }, 1000);
+            } else {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+                btnTimerToggle.innerText = "Resume Session";
+                btnTimerToggle.classList.replace('btn-cute-pink', 'btn-cute-sage');
+            }
+        });
+
+        btnTimerReset.addEventListener('click', () => {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            totalSeconds = 0;
+            timerDisplay.innerText = "00:00";
+            btnTimerToggle.innerText = "Start Session";
+            btnTimerToggle.className = "btn btn-cute btn-cute-sage";
+        });
+
+        // --- ADD NEW BOOK ENGINE LOGIC ---
+        bookForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('book-title').value.trim();
+            const pages = parseInt(document.getElementById('book-pages').value);
+            const status = document.getElementById('book-status').value;
+
+            books.push({ id: Date.now(), title, pages, status });
+            saveAndRefresh();
+            bookForm.reset();
+        });
+
+        // --- CARD DELETE LOGIC HANDLER ACTION ---
+        window.deleteBook = function(id) {
+            books = books.filter(b => b.id !== id);
+            saveAndRefresh();
+        };
+
+        function saveAndRefresh() {
+            localStorage.setItem('booknook_books', JSON.stringify(books));
+            renderDashboard('All');
+        }
+
+        // --- ANALYTICS AND SHELF GRID PRESENTATION COMPILER RENDER ENGINE ---
+        function renderDashboard(filterType = 'All') {
+            bookshelfGrid.innerHTML = "";
+            
+            let totalBooksCount = books.length;
+            let completedCount = 0;
+            let totalPagesSum = 0;
+
+            books.forEach(book => {
+                totalPagesSum += book.pages;
+                if(book.status === 'Completed') completedCount++;
+
+                // Conditional matching validation rules filter check
+                if(filterType === 'All' || book.status === filterType) {
+                    let badgeClass = book.status === 'Completed' ? 'bg-success-subtle text-success' : 
+                                     book.status === 'Reading' ? 'bg-warning-subtle text-warning' : 'bg-secondary-subtle text-secondary';
+                    
+                    const cardColumn = document.createElement('div');
+                    cardColumn.className = "col-sm-6 col-12";
+                    cardColumn.innerHTML = `
+                        <div class="cozy-card h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge badge-status ${badgeClass} mb-2">${book.status}</span>
+                                <h5 class="mb-1">${book.title}</h5>
+                                <p class="text-muted small mb-3">📄 ${book.pages} pages</p>
+                            </div>
+                            <div class="text-end">
+                                <button onclick="deleteBook(${book.id})" class="btn text-danger p-0 small fw-bold">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                    bookshelfGrid.appendChild(cardColumn);
+                }
+            });
+
+            // Updating Static Badge Metrics Outputs
+            document.getElementById('stat-total-books').innerText = totalBooksCount;
+            document.getElementById('stat-completed-books').innerText = completedCount;
+            document.getElementById('stat-total-pages').innerText = totalPagesSum;
+
+            // Target calculations calculation dynamic bar gauge layout (Goal target set manually to 5 books max caps scale values)
+            let rawProgressPercentage = (completedCount / 5) * 100;
+            let cappedProgressValue = Math.min(Math.round(rawProgressPercentage), 100);
+            
+            const progressNode = document.getElementById('goal-progress-bar');
+            progressNode.style.width = `${cappedProgressValue}%`;
+            progressNode.innerText = `${cappedProgressValue}% Complete`;
+        }
+
+        window.filterBooks = function(filterOption) {
+            renderDashboard(filterOption);
+        };
+
+        // Initialize App Lifecycle Core view components
+        renderDashboard('All');
+    </script>
+</body>
+</html>
